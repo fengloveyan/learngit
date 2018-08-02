@@ -1,0 +1,12 @@
+Git Bash 命令：
+1、git init 创建库
+2、git add 文件 添加文件到git库
+3、git commit -m <message:修改或者添加说明>
+4、git status 查看仓库当前的状态
+5、git diff <文件> 查看仓库里的哪些文件被修改一级修改前后的对比
+6、git reset --hard HEAD^ 强制回到上一个版本
+7、git reset --hard <commit_id> 把当前版本回到上一个和commit_id一样的版本
+8、git reset HEAD <file> 可以把暂存区的修改撤掉，重新放回工作区
+9、git log  查看提交记录，以便确定要回退到哪个版本
+10、git reflog 查看命令记录，以便确定回退到之前的哪个版本
+11、git checkout -- <file> （-- 很重要 没有--，就变成了“切换到另一个分支”的命令，我们在后面的分支管理中会再次遇到git checkout命令） 把file文件在工作区的修改全部撤销，这里有两种情况：一种是file自修改后还没有被放到暂存区（也就是还没有执行 git add file 命令），现在，撤销修改就回到和版本库一模一样的状态；一种是file已经添加到暂存区后，又做了修改，现在，撤销修改就回到添加到暂存区后的状态；
