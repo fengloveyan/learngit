@@ -10,3 +10,23 @@ Git Bash 命令：
 9、git log  查看提交记录，以便确定要回退到哪个版本
 10、git reflog 查看命令记录，以便确定回退到之前的哪个版本
 11、git checkout -- <file> （-- 很重要 没有--，就变成了“切换到另一个分支”的命令，我们在后面的分支管理中会再次遇到git checkout命令） 把file文件在工作区的修改全部撤销，这里有两种情况：一种是file自修改后还没有被放到暂存区（也就是还没有执行 git add file 命令），现在，撤销修改就回到和版本库一模一样的状态；一种是file已经添加到暂存区后，又做了修改，现在，撤销修改就回到添加到暂存区后的状态；
+
+远程仓库：
+第1步：创建SSHKey。在用户主目录下，看看有没有.ssh目录，如果有，再看看这个目录下有没有id_rsa和id_rsa.pub这两个文件，如果已经有了，可直接跳到下一步。如果没有，打开Shell（Windows下打开Git Bash），
+创建SSH Key：
+$ ssh-keygen -t rsa -C "youremail@example.com"
+
+第2步：登陆GitHub，打开“Account settings”，“SSH Keys”页面：
+然后，点“Add SSH Key”，填上任意Title，在Key文本框里粘贴id_rsa.pub文件的内容：
+
+第3步：本地关联远程库，在本地的learngit仓库下运行命令：
+$ git remote add origin git@github.com:<github用户名>/<库名>.git
+
+第4步：把本地库的内容推送到远程库：
+$ git push -u origin master
+
+远程仓库小结：
+要关联一个远程库，使用命令
+git remote add origin git@server-name:path/repo-name.git；
+关联后，使用命令git push -u origin master第一次推送master分支的所有内容；
+此后，每次本地提交后，只要有必要，就可以使用命令git push origin master推送最新修改；
